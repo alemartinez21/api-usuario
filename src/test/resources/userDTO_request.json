@@ -1,0 +1,22 @@
+{
+  "id": "idMock",
+  "name": "Alejandro",
+  "email": "alejandrotest2@gmail.com",
+  "password": "Hola12345",
+  "token": "tokenMock",
+  "isActive":true,
+  "phones":[
+    {
+      "id" : 1,
+      "number":"99999999",
+      "citycode":"01",
+      "countrycode":"53"
+    },
+    {
+      "id": 2,
+      "number":"2222222",
+      "citycode":"01",
+      "countrycode":"53"
+    }
+  ]
+}

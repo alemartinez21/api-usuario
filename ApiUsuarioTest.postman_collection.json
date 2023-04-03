@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "7f3ad519-4cc0-4742-9b1d-8fc55ec955af",
+		"name": "ApiUsuarioTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GenerarToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.newToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"idUser\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"Alejandro\",\r\n   \"email\":\"alejandrotest@gmail.com\",\r\n   \"password\":\"Hola12345\",\r\n   \"phones\":[\r\n      {\r\n         \"number\":\"99999999\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      },\r\n        {\r\n         \"number\":\"2222222\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      }\r\n   ]\r\n   \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario 2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"Alfredo\",\r\n   \"email\":\"alfredotest@hotmail.com\",\r\n   \"password\":\"Hola12345\",\r\n   \"phones\":[\r\n      {\r\n         \"number\":\"99999999\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      },\r\n        {\r\n         \"number\":\"2222222\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      }\r\n   ]\r\n   \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearEmailError",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"Alejandro\",\r\n   \"email\":\"alejandrotest@gmail.com\",\r\n   \"password\":\"Hola12345\",\r\n   \"phones\":[\r\n      {\r\n         \"number\":\"99999999\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      },\r\n        {\r\n         \"number\":\"2222222\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      }\r\n   ]\r\n   \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user"
+					],
+					"query": [
+						{
+							"key": "Api",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findUserById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Auth-Token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhcGlKV1QiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjA2NTc4NTMyLCJleHAiOjE2MDY1NzkxMzJ9.fDoBs-kFFFnvxvgyC550PWZ9eJOxjhTBUwDRdglhCGG9HMjcMtPng1ikt9h347aoH7-v3WJUPlZQaJDCWvslUw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/{{idUser}}?Auth-Token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"{{idUser}}"
+					],
+					"query": [
+						{
+							"key": "Auth-Token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findUserByIdNodFound Copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Auth-Token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhcGlKV1QiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjA2NTc4NTMyLCJleHAiOjE2MDY1NzkxMzJ9.fDoBs-kFFFnvxvgyC550PWZ9eJOxjhTBUwDRdglhCGG9HMjcMtPng1ikt9h347aoH7-v3WJUPlZQaJDCWvslUw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/1?Auth-Token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"1"
+					],
+					"query": [
+						{
+							"key": "Auth-Token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"idUser\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"Alejandro UPDATE\",\r\n   \"email\":\"alejandrotest@gmail.com\",\r\n   \"password\":\"Hola54321\",\r\n   \"phones\":[\r\n      {\r\n         \"number\":\"99999999\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      },\r\n        {\r\n         \"number\":\"2222222\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      }\r\n   ]\r\n   \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/update/{{idUser}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"update",
+						"{{idUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUserNotFinded",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"idUser\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Auth-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\":\"Alejandro UPDATE\",\r\n   \"email\":\"alejandrotest@gmail.com\",\r\n   \"password\":\"Hola54321\",\r\n   \"phones\":[\r\n      {\r\n         \"number\":\"99999999\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      },\r\n        {\r\n         \"number\":\"2222222\",\r\n         \"citycode\":\"01\",\r\n         \"countrycode\":\"53\"\r\n      }\r\n   ]\r\n   \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/update/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"update",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUserNotFound",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Auth-Token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhcGlKV1QiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjA2NTc4NTMyLCJleHAiOjE2MDY1NzkxMzJ9.fDoBs-kFFFnvxvgyC550PWZ9eJOxjhTBUwDRdglhCGG9HMjcMtPng1ikt9h347aoH7-v3WJUPlZQaJDCWvslUw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/delete/1?Auth-Token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"delete",
+						"1"
+					],
+					"query": [
+						{
+							"key": "Auth-Token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Auth-Token",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhcGlKV1QiLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjA2NTc4NTMyLCJleHAiOjE2MDY1NzkxMzJ9.fDoBs-kFFFnvxvgyC550PWZ9eJOxjhTBUwDRdglhCGG9HMjcMtPng1ikt9h347aoH7-v3WJUPlZQaJDCWvslUw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/prueba/api/user/delete/1?Auth-Token={{token}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prueba",
+						"api",
+						"user",
+						"delete",
+						"1"
+					],
+					"query": [
+						{
+							"key": "Auth-Token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

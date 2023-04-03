@@ -1,0 +1,18 @@
+{
+  "name":"Alejandro",
+  "email":"alejandrotest2@gmail.com",
+  "password":"Hola12345",
+  "phones":[
+    {
+      "number":"99999999",
+      "citycode":"01",
+      "countrycode":"53"
+    },
+    {
+      "number":"2222222",
+      "citycode":"01",
+      "countrycode":"53"
+    }
+  ]
+
+}
